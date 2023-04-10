@@ -14,12 +14,11 @@ export const Task = (props) => {
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
-                <View style={styles.square}></View>
+                <View style={[{backgroundColor: isActive ? '#bb8feb' : ''},styles.square]}></View>
             </View>
             <TouchableOpacity onPress={() => completeTask()}>
-            <Text style={{ textDecorationLine: isActive ? 'line-through' : 'none' }}>{props.text}</Text>
+            <Text style={[{ textDecorationLine: isActive ? 'line-through' : 'none' }, styles.textTodo]}>{props.text}</Text>
             </TouchableOpacity>
-            <View style={[{backgroundColor: isActive ? '#55bcf6' : ''},styles.circular]}></View>
         </View>
     )
 }

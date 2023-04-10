@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Pressable, Text, TouchableOpacity, StyleSheet, TextInput, Button, KeyboardAvoidingView } from "react-native";
+import { View, Pressable, Text, TouchableOpacity, StyleSheet,TextInput, Button, KeyboardAvoidingView, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Screen1, text } from './Screen1';
 import { Task } from './Task';
@@ -34,6 +34,7 @@ export const Screen2 = () => {
             <TouchableOpacity onPress ={() => navigation.navigate('ProfileScreen')}>
                 <Text style={styles.sectionTitle}>Today's tasks</Text>
             </TouchableOpacity>
+            <ScrollView>
             <View style={styles.items}>
               {taskItems.map((item, index) => {
                 return (
@@ -42,6 +43,7 @@ export const Screen2 = () => {
                  </TouchableOpacity> )
               })}
             </View>
+            </ScrollView>
             <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
             style={styles.writeTaskWrapper}>
@@ -71,12 +73,14 @@ export const styles = StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 24,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginLeft: 28,
     },
     items:{
         fontSize: 24,
         fontWeight: 'bold',
         marginTop: 30,
+        marginBottom: 100,
     },
     labelText: {
         color: '#fff',
@@ -92,7 +96,8 @@ export const styles = StyleSheet.create({
       width:250,
       paddingHorizontal: 15,
       paddingVertical: 15,
-      margin: 30,
+      marginLeft: 40,
+      marginRight:50,
       borderWith: 1,
       padding: 10,
       backgroundColor: '#fff',
@@ -110,19 +115,24 @@ export const styles = StyleSheet.create({
     addWrapper: {
       width: 60,
       height: 60,
-      backgroundColor: '#fff',
+      backgroundColor: '#bb8feb',
       borderRadius: 60,
       justifyContent: 'center',
       alignItems: 'center',
+      textAlign: 'center'
     },
-    adddText:{},
+    addText:{
+      color: '#fff',
+      fontSize: 42,
+    },
     item: {
       backgroundColor: '#fff',
       padding: 15,
       borderRadius: 10,
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: 'flex-start',
+      textAlign: 'center',
       marginBottom: 20,
   },
   itemLeft: {
@@ -133,10 +143,11 @@ export const styles = StyleSheet.create({
   square: {
       width: 24,
       height: 24,
-      backgroundColor: '#55bcf6',
-      opacity: 0.4,
       borderRadius: 5,
+      borderColor: '#bb8feb',
+      borderWidth: 2,
       marginRight: 15,
+      marginLeft: 10,
   },
   itemText: {
       maxWidth: '80%',
@@ -156,8 +167,7 @@ export const styles = StyleSheet.create({
   deleteSquare: {
     width: 60,
     height: 30,
-    backgroundColor: 'red',
-    opacity: 0.5,
+    backgroundColor: '#e092e0',
     borderRadius: 5,
     marginLeft: 250,
     justifyContent: 'center',
@@ -167,5 +177,8 @@ export const styles = StyleSheet.create({
   deleteText: {
     color: '#fff',
     fontSize: 16,
+  },
+  textTodo: {
+    marginLeft: 10,
   }
   });
